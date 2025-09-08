@@ -1,0 +1,194 @@
+$crem: #eae0d0;
+$maro: #6b4a2e;
+$text-dark: #2c2c2c;
+$text-light: #f5f5f5;
+
+.hero {
+  background: url("/assets/images/leonardo.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.25)
+    );
+    z-index: -1;
+  }
+
+  .hero__logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+    z-index: 2;
+  }
+
+  .hero__menu {
+    position: absolute;
+    top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+
+    a,
+    .trigger {
+      background: none;
+      border: none;
+      outline: none;
+      appearance: none;
+      font: inherit;
+      color: #ead7c5;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    a:hover,
+    .trigger:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .hero__menu--left {
+    left: 2rem;
+  }
+
+  .hero__menu--right {
+    right: 2rem;
+  }
+
+  .dropdown {
+    position: relative;
+
+    .submenu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 160px;
+      background: rgba(20, 15, 15, 0.9);
+      border-radius: 0.5rem;
+      padding: 0.35rem;
+      list-style: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+
+      li a {
+        display: block;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.4rem;
+        color: #ead7c5;
+        text-decoration: none;
+
+        &:hover {
+          background: rgba(234, 215, 197, 0.15);
+        }
+      }
+    }
+
+    &:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  }
+}
+
+section {
+  padding: 100px 20px;
+  text-align: center;
+
+  h2 {
+    margin: 0 0 16px;
+  }
+  p {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+.crem {
+  background-color: $crem;
+  color: $text-dark;
+}
+
+.maro {
+  background-color: $maro;
+  color: $text-light;
+}
+
+.hero {
+  background-image: url("/assets/images/leonardo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.25)
+    );
+    z-index: -1;
+  }
+
+  .hero__logo {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+
+    z-index: 2;
+  }
+
+  .hero__inner {
+    text-align: center;
+    color: $text-light;
+    padding: 2rem;
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.02em;
+      margin: 0;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+    }
+  }
+}

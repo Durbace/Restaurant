@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Lora&display=swap');
+
+:root {
+  --brand-font: 'UnifrakturCook', cursive;
+  --body-font: 'Lora', serif;
+}
+
+body {
+  font-family: var(--body-font);
+  margin: 0;
+}
+
+h1, h2, h3, .brand-font {
+  font-family: var(--brand-font);
+}
