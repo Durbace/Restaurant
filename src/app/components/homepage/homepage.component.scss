@@ -161,9 +161,9 @@ $text-light: #f5f5f5;
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      height: 12px; 
-      width: 260px; 
-      z-index: 40; 
+      height: 12px;
+      width: 260px;
+      z-index: 40;
     }
   }
   .dropdown .submenu li + li {
@@ -178,6 +178,25 @@ $text-light: #f5f5f5;
     height: 1px;
     background: rgba(234, 215, 197, 0.18);
     pointer-events: none;
+  }
+
+  .dropdown .submenu li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    padding: 0.7rem 0.9rem;
+    min-height: 40px;
+    border-radius: 8px;
+    line-height: 1.25;
+    color: #fffbe8;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba(234, 215, 197, 0.22);
+      color: #ffffff;
+    }
   }
 }
 
@@ -254,10 +273,38 @@ section {
     padding: 2rem;
 
     h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
       letter-spacing: 0.02em;
       margin: 0;
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
     }
   }
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+}
+
+.hero__inner {
+  text-align: center;
+  color: $text-light;
+  padding: 2rem;
+}
+
+.hero__headline {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.1;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+
+  font-size: clamp(3rem, 8vw, 6.5rem);
+}
+
+.hero__headline span {
+  display: block;
+}
+
+.hero__headline .brand {
+  color: $crem;
+  letter-spacing: 0.03em;
 }
