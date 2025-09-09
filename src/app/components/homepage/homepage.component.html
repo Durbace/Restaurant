@@ -8,7 +8,13 @@
   <nav class="hero__menu hero__menu--left">
     <a href="#">ACASĂ</a>
     <a href="#">MENIU</a>
-    <div class="dropdown">
+    <div
+      class="dropdown"
+      (mouseenter)="openHover($event)"
+      (mouseleave)="closeHover($event)"
+      (focusin)="openHover($event)"
+      (focusout)="closeHover($event)"
+    >
       <button class="trigger">LOCAȚII</button>
       <ul class="submenu">
         <li><a href="#">TERASE</a></li>
@@ -22,7 +28,14 @@
   <nav class="hero__menu hero__menu--right">
     <a href="#">EVENIMENTE</a>
     <a href="#">CONTACT</a>
-    <div class="dropdown">
+
+    <div
+      class="dropdown"
+      (mouseenter)="openHover($event)"
+      (mouseleave)="closeHover($event)"
+      (focusin)="openHover($event)"
+      (focusout)="closeHover($event)"
+    >
       <button class="trigger">MAI MULTE</button>
       <ul class="submenu">
         <li><a href="#">DESPRE</a></li>
