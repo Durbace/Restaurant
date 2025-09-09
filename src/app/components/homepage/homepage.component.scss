@@ -49,7 +49,7 @@ section {
   place-items: center;
   isolation: isolate;
   overflow: clip;
-  background: url("/assets/images/leonardo.jpg") center / cover no-repeat;
+  background: var(--hero-bg, none) center / cover no-repeat;
 
   height: 100vh;
   min-height: 100vh;
@@ -790,8 +790,7 @@ section {
     inset: 0;
     z-index: 0;
     pointer-events: none;
-
-    background-image: url("/assets/textures/paper-texture.jpg");
+    background-image: var(--paper-bg, none);
     background-position: center;
     background-repeat: repeat;
     background-size: 320px 320px;
