@@ -1,42 +1,50 @@
+/* =======================
+   Variabile (brand)
+======================= */
 $crem: #eae0d0;
 $maro: #6b4a2e;
 $text-dark: #2c2c2c;
 $text-light: #f5f5f5;
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
+/* =======================
+   Bază
+======================= */
+html, body { height: 100%; }
+body { margin: 0; }
+
+section {
+  padding: 100px 20px;
+  text-align: center;
+
+  h2 { margin: 0 0 16px; }
+  p {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
 }
 
+.crem { background-color: $crem; color: $text-dark; }
+.maro { background-color: $maro; color: $text-light; }
+
+/* =======================
+   Hero
+======================= */
 .hero {
   position: relative;
   display: grid;
   place-items: center;
   isolation: isolate;
   overflow: clip;
-
   background: url("/assets/images/leonardo.jpg") center / cover no-repeat;
 
-  height: 100vh;
-  min-height: 100vh;
-
-  @supports (height: 100svh) {
-    height: 100svh;
-    min-height: 100svh;
-  }
-
-  @supports (height: 100dvh) {
-    height: 100dvh;
-    min-height: 100dvh;
-  }
+  height: 100vh; min-height: 100vh;
+  @supports (height: 100svh) { height: 100svh; min-height: 100svh; }
+  @supports (height: 100dvh) { height: 100dvh; min-height: 100dvh; }
 
   &::before {
     content: "";
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.45),
@@ -47,10 +55,7 @@ body {
   }
 
   .hero__logo {
-    position: absolute;
-    top: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%);
     height: 90px;
     background: rgba(255, 255, 255, 0.8);
     padding: 0.4rem 0.8rem;
@@ -61,83 +66,45 @@ body {
   }
 
   .hero__menu {
-    position: absolute;
-    top: 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 2;
+    position: absolute; top: 2.5rem; display: flex; align-items: center; gap: 1rem; z-index: 2;
 
-    a,
-    .trigger {
-      background: none;
-      border: none;
-      font: inherit;
-      color: #ead7c5;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0.8rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
+    a, .trigger {
+      background: none; border: none; font: inherit;
+      color: #ead7c5; text-decoration: none; font-weight: 500;
+      padding: 0.5rem 0.8rem; border-radius: 0.5rem; cursor: pointer;
       transition: background 0.2s ease;
     }
-
-    a:hover,
-    .trigger:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
+    a:hover, .trigger:hover { background: rgba(255, 255, 255, 0.15); }
   }
-
-  .hero__menu--left {
-    left: 2rem;
-  }
-  .hero__menu--right {
-    right: 2rem;
-  }
+  .hero__menu--left { left: 2rem; }
+  .hero__menu--right { right: 2rem; }
 
   .hero__inner {
-    padding: 0.5rem 1rem;
-    text-align: center;
-    color: $text-light;
+    padding: 0.5rem 1rem; text-align: center; color: $text-light;
 
     .hero__headline {
-      margin: 0;
-      font-weight: 700;
-      line-height: 1.1;
+      margin: 0; font-weight: 700; line-height: 1.1;
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
       font-size: clamp(3rem, 8vw, 6.5rem);
 
-      span {
-        display: block;
-      }
-      .brand {
-        color: $crem;
-        letter-spacing: 0.03em;
-      }
+      span { display: block; }
+      .brand { color: $crem; letter-spacing: 0.03em; }
     }
   }
 
   .dropdown {
-    position: relative;
-    display: inline-block;
+    position: relative; display: inline-block;
 
     .trigger {
-      padding-right: 1.2rem;
-      cursor: default;
+      padding-right: 1.2rem; cursor: default;
       &::after {
-        content: "▼";
-        font-size: 0.65em;
-        margin-left: 0.35rem;
-        display: inline-block;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-        opacity: 0.8;
+        content: "▼"; font-size: 0.65em; margin-left: 0.35rem; display: inline-block;
+        transition: transform 0.2s ease, opacity 0.2s ease; opacity: 0.8;
       }
     }
 
     .submenu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
+      position: absolute; top: 100%; left: 50%;
       transform: translate(-50%, 8px);
       min-width: 160px;
       background: rgba(20, 15, 15, 0.95);
@@ -145,130 +112,238 @@ body {
       border-radius: 10px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       padding: 10px 12px;
-      list-style: none;
-      z-index: 50;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.18s ease 0.12s, transform 0.18s ease 0.12s,
+      list-style: none; z-index: 50;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition:
+        opacity 0.18s ease 0.12s,
+        transform 0.18s ease 0.12s,
         visibility 0s linear 0.12s;
 
       li + li {
-        margin-top: 8px;
-        position: relative;
-      }
-      li + li::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        left: 8px;
-        right: 8px;
-        height: 1px;
-        background: rgba(234, 215, 197, 0.18);
+        margin-top: 8px; position: relative;
+        &::before {
+          content: ""; position: absolute; top: -5px; left: 8px; right: 8px; height: 1px;
+          background: rgba(234, 215, 197, 0.18);
+        }
       }
 
       li a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 8px;
-        padding: 0.7rem 0.9rem;
-        min-height: 40px;
-        border-radius: 8px;
-        line-height: 1.25;
-        color: #fffbe8;
-        text-decoration: none;
-        &:hover {
-          background: rgba(234, 215, 197, 0.22);
-          color: #fff;
-        }
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        gap: 8px; padding: 0.7rem 0.9rem; min-height: 40px; border-radius: 8px; line-height: 1.25;
+        color: #fffbe8; text-decoration: none;
+        &:hover { background: rgba(234, 215, 197, 0.22); color: #fff; }
       }
     }
 
     &.open .submenu {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translate(-50%, 0);
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
       transition: opacity 0.18s ease 0s, transform 0.18s ease 0s, visibility 0s;
     }
+    &.open > .trigger::after { transform: rotate(180deg); opacity: 1; }
 
-    &.open > .trigger::after {
-      transform: rotate(180deg);
-      opacity: 1;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 12px;
-      width: 260px;
-      z-index: 40;
-    }
+    &::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); height: 12px; width: 260px; z-index: 40; }
   }
 }
 
-section {
-  padding: 100px 20px;
-  text-align: center;
-  h2 {
-    margin: 0 0 16px;
-  }
-  p {
-    max-width: 720px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-}
-.crem {
-  background-color: $crem;
-  color: $text-dark;
-}
-.maro {
-  background-color: $maro;
-  color: $text-light;
-}
-
+/* Instagram link din Hero */
 .hero__instagram {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-
-  color: #ead7c5;
-  text-decoration: none;
-  z-index: 3;
-  padding: 0.5rem;
-
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: #ead7c5; text-decoration: none; z-index: 3; padding: 0.5rem;
   transition: color 0.2s ease;
 
-  &:hover {
-    color: $crem;
-  }
+  &:hover { color: $crem; }
 
   .handle {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg);
+    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .icon svg { width: 1.6rem; height: 1.6rem; display: block; }
+}
+
+/* =======================
+   Secțiune Split (base)
+======================= */
+.split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  min-height: clamp(420px, 62vh, 720px);
+  background: #fff;
+  isolation: isolate;
+
+  @media (max-width: 900px) { grid-template-columns: 1fr; min-height: unset; }
+}
+
+.split__media {
+  position: relative; overflow: clip;
+  border-radius: 0 24px 24px 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);
+
+  @media (max-width: 900px) { border-radius: 16px; clip-path: none; margin: 0 6px; }
+
+  img {
+    width: 100%; height: 100%; aspect-ratio: 16 / 11; object-fit: cover; display: block;
+    filter: saturate(1.05) contrast(1.02);
+    transform: scale(1.02);
+    transition: transform 0.5s ease;
   }
 
-  .icon {
-    svg {
-      width: 1.6rem;
-      height: 1.6rem;
-      display: block;
+  &::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.06) 45%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &:hover img { transform: scale(1.05); }
+  @media (prefers-reduced-motion: reduce) { &:hover img { transform: none; transition: none; } }
+}
+
+.split__content {
+  background: #fff; color: $text-dark;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  display: grid; align-content: center; gap: 1.1rem;
+
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+  background: radial-gradient(1000px 300px at 20% -20%, rgba($crem,.28), transparent 60%) #fff;
+
+  @media (max-width: 900px) { margin: 14px 6px 0; padding: clamp(1rem, 4vw, 2rem); }
+}
+
+.split__title {
+  margin: 0; font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; line-height: 1.1;
+
+  span:last-child {
+    position: relative; display: inline-block; isolation: isolate;
+    &::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: .12em; height: .45em;
+      background: rgba($crem, .75); z-index: -1; border-radius: .35em; filter: blur(.4px);
     }
   }
+}
+
+.split__text {
+  margin: 0; max-width: 52ch; line-height: 1.65;
+  color: mix($text-dark, #000, 85%); opacity: .95;
+}
+
+/* eticheta verticală – subtilă */
+.split__label {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(180deg);
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-weight: 800; font-size: clamp(1.6rem, 6vw, 3.2rem); letter-spacing: .08em;
+  color: #fff;
+  -webkit-text-stroke: 3px rgba(#2c2c2c, .55);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25), 0 6px 22px rgba(0,0,0,.28);
+  opacity: .18; mix-blend-mode: overlay; pointer-events: none;
+}
+
+/* =======================
+   Secțiune Meniu-info
+======================= */
+.menu-info {
+  position: relative; display: grid; place-items: center;
+  padding: clamp(2.5rem, 6vw, 4rem) 1rem;
+  min-height: 60vh;
+  background: $crem; color: $text-dark; overflow: hidden;
+}
+.menu-info__bg {
+  position: absolute; inset: 0; margin: auto;
+  width: min(92vw, 1100px); height: auto; object-fit: contain; object-position: center;
+  opacity: .16; filter: grayscale(8%) contrast(108%); pointer-events: none; user-select: none; z-index: 0;
+}
+.menu-info__content { position: relative; z-index: 1; text-align: center; max-width: 64ch; padding: 0 1rem; }
+.menu-info__title { margin: 0 0 .75rem; font-size: clamp(1.9rem, 4.5vw, 2.6rem); font-weight: 800; letter-spacing: 0.02em; }
+.menu-info__line { margin: .35rem 0; line-height: 1.65; font-size: clamp(1rem, 2.6vw, 1.125rem); opacity: .95; }
+
+@supports (backdrop-filter: blur(6px)) {
+  .menu-info__content {
+    background: rgba(255,255,255,.3);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 16px;
+    padding: clamp(1rem, 3vw, 1.6rem) clamp(1rem, 3vw, 2.2rem);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 26px rgba(0,0,0,.08);
+  }
+}
+@media (max-width: 600px) {
+  .menu-info { min-height: 52vh; }
+  .menu-info__bg { width: min(96vw, 940px); opacity: .2; }
+}
+
+/* =======================
+   Butoane – bază & variante
+======================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .55rem; padding: .9rem 1.2rem;
+  border-radius: 999px; text-decoration: none; font-weight: 700; letter-spacing: .01em;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  will-change: transform; border: 1px solid transparent;
+
+  &:hover { transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+}
+
+.btn--outline {
+  background: transparent; color: $maro; border: 1.5px solid mix($maro, #000, 65%);
+  box-shadow: 0 2px 10px rgba($maro, .12);
+
+  &:hover { background: rgba($crem, .45); color: mix($maro, #000, 85%); border-color: mix($maro, #000, 75%); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(#fff, .9), 0 0 0 6px rgba($maro, .45); }
+}
+
+.btn--filled {
+  background: $maro; color: $crem; border: 1.5px solid mix($maro, #000, 80%);
+  box-shadow: 0 6px 18px rgba($maro, .28);
+
+  &:hover { box-shadow: 0 10px 24px rgba($maro, .36); background: mix($maro, #000, 92%); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba($crem, .9), 0 0 0 6px rgba($maro, .55); }
+}
+
+/* =======================
+   Ajustări specifice în .split
+   – mărime buton, centrare, săgeată animată
+======================= */
+.split .btn.btn--outline {
+  padding: .6rem .8rem;
+  min-inline-size: 9rem;  /* puțin mai lat */
+  min-block-size: 2rem;   /* puțin mai înalt */
+  font-size: .94rem;
+  letter-spacing: 0;
+  gap: .4rem;
+  max-inline-size: none;
+}
+.split__content > .btn { justify-self: center; margin-inline: auto; margin-top: .3rem; }
+.split .btn.btn--outline > span[aria-hidden="true"] {
+  display: inline-block; font-size: 1.5em; line-height: 1;
+  transform: translateX(0); transition: transform .22s ease; will-change: transform;
+}
+.split .btn.btn--outline:hover > span[aria-hidden="true"] { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  .split .btn.btn--outline > span[aria-hidden="true"] { transition: none; transform: none; }
+}
+
+/* =======================
+   Varianta ROOMS (poză dreapta, fundal crem)
+======================= */
+.split--rooms { background: $crem; }
+
+.split--rooms .split__content {
+  background: radial-gradient(1000px 300px at 20% -20%, rgba($crem, .38), transparent 60%) #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.05), 0 2px 6px rgba(0,0,0,.04);
+  border-color: rgba(0,0,0,.05);
+}
+
+.split__media--right {
+  border-radius: 24px 0 0 24px;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+
+  &::after {
+    background: linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.06) 45%, transparent 70%);
+  }
+
+  @media (max-width: 900px) { border-radius: 16px; clip-path: none; }
 }
