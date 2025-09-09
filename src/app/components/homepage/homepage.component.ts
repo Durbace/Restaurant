@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -7,7 +7,7 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit, OnDestroy {
   private hoverTimers = new WeakMap<HTMLElement, number>();
 
   openHover(evt: Event) {
@@ -37,10 +37,13 @@ export class HomepageComponent {
   private get hero(): HTMLElement | null {
     return document.querySelector('.hero');
   }
+
   private get nextSection(): HTMLElement | null {
     const hero = this.hero;
     if (!hero) return null;
-    return hero.nextElementSibling instanceof HTMLElement ? hero.nextElementSibling : null;
+    return hero.nextElementSibling instanceof HTMLElement
+      ? hero.nextElementSibling
+      : null;
   }
 
   private inHero(): boolean {
@@ -53,8 +56,7 @@ export class HomepageComponent {
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  @HostListener('window:wheel', ['$event'])
-  onWheel(e: WheelEvent) {
+  private onWheel = (e: WheelEvent) => {
     if (this.locked || !this.inHero()) return;
     if (e.deltaY > 0 && this.nextSection) {
       e.preventDefault();
@@ -62,16 +64,22 @@ export class HomepageComponent {
       this.smoothTo(this.nextSection);
       setTimeout(() => (this.locked = false), 700);
     }
-  }
+  };
 
-  @HostListener('window:touchstart', ['$event'])
-  onTouchStart(e: TouchEvent) {
-    this.startY = e.touches[0].clientY;
-  }
+  private onTouchStart = (e: TouchEvent) => {
+    if (e.touches && e.touches.length) {
+      this.startY = e.touches[0].clientY;
+    }
+  };
 
-  @HostListener('window:touchmove', ['$event'])
-  onTouchMove(e: TouchEvent) {
-    if (this.startY === null || this.locked || !this.inHero() || !this.nextSection) return;
+  private onTouchMove = (e: TouchEvent) => {
+    if (
+      this.startY === null ||
+      this.locked ||
+      !this.inHero() ||
+      !this.nextSection
+    )
+      return;
     const delta = e.touches[0].clientY - this.startY;
     if (delta < -8) {
       e.preventDefault();
@@ -82,15 +90,13 @@ export class HomepageComponent {
         this.startY = null;
       }, 700);
     }
-  }
+  };
 
-  @HostListener('window:touchend')
-  onTouchEnd() {
+  private onTouchEnd = (_e: TouchEvent) => {
     this.startY = null;
-  }
+  };
 
-  @HostListener('window:keydown', ['$event'])
-  onKey(e: KeyboardEvent) {
+  private onKey = (e: KeyboardEvent) => {
     if (this.locked || !this.inHero() || !this.nextSection) return;
     if ([' ', 'PageDown', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
@@ -98,5 +104,24 @@ export class HomepageComponent {
       this.smoothTo(this.nextSection);
       setTimeout(() => (this.locked = false), 700);
     }
+  };
+
+  ngOnInit() {
+    window.addEventListener('wheel', this.onWheel, { passive: false });
+
+    window.addEventListener('touchstart', this.onTouchStart, { passive: true });
+    window.addEventListener('touchend', this.onTouchEnd, { passive: true });
+
+    window.addEventListener('touchmove', this.onTouchMove, { passive: false });
+
+    window.addEventListener('keydown', this.onKey);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('wheel', this.onWheel);
+    window.removeEventListener('touchstart', this.onTouchStart);
+    window.removeEventListener('touchmove', this.onTouchMove);
+    window.removeEventListener('touchend', this.onTouchEnd);
+    window.removeEventListener('keydown', this.onKey);
   }
 }
