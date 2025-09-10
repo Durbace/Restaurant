@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Lora&display=swap');
 
 :root {
-  --brand-font: 'UnifrakturCook', cursive;
+  --brand-font: 'IM Fell English SC', serif;
   --body-font: 'Lora', serif;
 }
 
@@ -12,4 +12,5 @@ body {
 
 h1, h2, h3, .brand-font {
   font-family: var(--brand-font);
+  font-variant: small-caps;
 }
